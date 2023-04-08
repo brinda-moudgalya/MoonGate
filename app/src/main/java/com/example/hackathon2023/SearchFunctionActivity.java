@@ -7,27 +7,38 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class SearchFunctionActivity extends AppCompatActivity {
 
     private ListView listSearch;
     private EditText editSearch;
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> stringArrayAdapter;
+    private ArrayAdapter<String> tempArrayAdapter;
+    private ArrayList<String> temp = new ArrayList<>();
 
-    // inside of here, we pull information from each website about which plants they have.
-    String [] listsOfPlants = {
-
+    // inside of each of these, we pull information from each website about which plants they have.
+    String [] homeDepotPlantsList = {
+            "Rose", "Blueberry plant", "Tulip", "Lily", "Carnation", "Peach", "Cherry",
+            "Cherry Blossom", "Nightshade", "Lavender", "Lilac", "Magnolia"
+    };
+    String [] lowesPlantsList = {
+            "Rose", "Tulip", "Carnation", "Sweet Pea", "Sweet William", "Pine", "Apricot", "Peach"
+    };
+    String [] amazonPlantsList = {
+            "Rhododendron", "Chamomile", "Parsley", "Thyme", "Sage", "Rosemary", "Sweet Pea",
+            "Peach", "Rose", "Pear", "Apple"
     };
 
     String [] namesOfStores = {
-            "Home Depot", "Lowes", "Plant Something Else", "Hello this is a Test."
-            , "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
-            "15"
-            // change the above to:
-            // listOfPlants for Home Depot
-            // listOfPlants for Lowes
-            // ...
+            "Home Depot", "Lowes", "Amazon"
+    };
+    String [][] listFromEachStore = {
+            homeDepotPlantsList, lowesPlantsList, amazonPlantsList
     };
 
     @Override
@@ -37,8 +48,11 @@ public class SearchFunctionActivity extends AppCompatActivity {
 
         listSearch = findViewById(R.id.listSearch);
         editSearch = findViewById(R.id.editSearch);
-        adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.textViewListItem, namesOfStores);
-        listSearch.setAdapter(adapter);
+        stringArrayAdapter = new ArrayAdapter<>
+                (this, R.layout.list_item, R.id.textViewListItem, namesOfStores);
+        tempArrayAdapter = new ArrayAdapter<>
+                (this, R.layout.list_item, R.id.textViewListItem, temp);
+        listSearch.setAdapter(stringArrayAdapter);
 
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -48,9 +62,24 @@ public class SearchFunctionActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                SearchFunctionActivity.this.adapter.getFilter().filter(charSequence);
+                for (String plant : homeDepotPlantsList) {
+                    if (plant.contains(charSequence)) {
+                        temp.add("Home Depot: " + plant);
+                    }
+                }
+                for (String plant : lowesPlantsList) {
+                    if (plant.contains(charSequence)) {
+                        temp.add("Lowes: " + plant);
+                    }
+                }
+                for (String plant : amazonPlantsList) {
+                    if (plant.contains(charSequence)) {
+                        temp.add("Amazon: " + plant);
+                    }
+                }
+                listSearch.setAdapter(tempArrayAdapter);
+                SearchFunctionActivity.this.tempArrayAdapter.getFilter().filter(charSequence);
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
 

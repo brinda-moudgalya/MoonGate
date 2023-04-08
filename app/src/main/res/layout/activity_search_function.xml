@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/light_blue"
+    android:background="#AAC3A3"
     tools:context=".SearchFunctionActivity">
 
     <EditText
         android:id="@+id/editSearch"
         android:hint="Search Here"
+        android:layout_marginTop="20dp"
         android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,5 +20,9 @@
         android:id="@+id/listSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
