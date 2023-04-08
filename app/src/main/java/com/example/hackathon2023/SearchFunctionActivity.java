@@ -17,7 +17,6 @@ public class SearchFunctionActivity extends AppCompatActivity {
 
     private ListView listSearch;
     private EditText editSearch;
-    private ArrayAdapter<String> stringArrayAdapter;
     private ArrayAdapter<String> tempArrayAdapter;
     private ArrayList<String> temp = new ArrayList<>();
 
@@ -37,53 +36,43 @@ public class SearchFunctionActivity extends AppCompatActivity {
     String [] namesOfStores = {
             "Home Depot", "Lowes", "Amazon"
     };
-    String [][] listFromEachStore = {
-            homeDepotPlantsList, lowesPlantsList, amazonPlantsList
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_function);
 
+        // connecting activity to xml components
         listSearch = findViewById(R.id.listSearch);
         editSearch = findViewById(R.id.editSearch);
-        stringArrayAdapter = new ArrayAdapter<>
-                (this, R.layout.list_item, R.id.textViewListItem, namesOfStores);
+
+        // adding each plant into temp:
+        for (String plant : homeDepotPlantsList) {
+            temp.add("Home Depot: " + plant);
+        }
+        for (String plant : lowesPlantsList) {
+            temp.add("Lowes: " + plant);
+        }
+        for (String plant : amazonPlantsList) {
+            temp.add("Amazon: " + plant);
+        }
+
+        // setting array adapter, which sets the information displayed in the searchview
         tempArrayAdapter = new ArrayAdapter<>
                 (this, R.layout.list_item, R.id.textViewListItem, temp);
-        listSearch.setAdapter(stringArrayAdapter);
+        listSearch.setAdapter(tempArrayAdapter);
 
         editSearch.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
-            }
-
+            // as user types, plants are deleted if they don't contain correct letters
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                for (String plant : homeDepotPlantsList) {
-                    if (plant.contains(charSequence)) {
-                        temp.add("Home Depot: " + plant);
-                    }
-                }
-                for (String plant : lowesPlantsList) {
-                    if (plant.contains(charSequence)) {
-                        temp.add("Lowes: " + plant);
-                    }
-                }
-                for (String plant : amazonPlantsList) {
-                    if (plant.contains(charSequence)) {
-                        temp.add("Amazon: " + plant);
-                    }
-                }
-                listSearch.setAdapter(tempArrayAdapter);
                 SearchFunctionActivity.this.tempArrayAdapter.getFilter().filter(charSequence);
             }
             @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
+            public void afterTextChanged(Editable editable) {}
         });
     }
 }
