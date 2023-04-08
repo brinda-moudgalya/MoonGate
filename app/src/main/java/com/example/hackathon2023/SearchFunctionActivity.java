@@ -22,6 +22,8 @@ public class SearchFunctionActivity extends AppCompatActivity {
 
     String [] namesOfStores = {
             "Home Depot", "Lowes", "Plant Something Else", "Hello this is a Test."
+            , "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+            "15"
             // change the above to:
             // listOfPlants for Home Depot
             // listOfPlants for Lowes
