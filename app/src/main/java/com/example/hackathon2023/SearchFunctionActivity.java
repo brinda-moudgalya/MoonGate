@@ -15,8 +15,17 @@ public class SearchFunctionActivity extends AppCompatActivity {
     private EditText editSearch;
     private ArrayAdapter<String> adapter;
 
-    String [] data = {
+    // inside of here, we pull information from each website about which plants they have.
+    String [] listsOfPlants = {
+
+    };
+
+    String [] namesOfStores = {
             "Home Depot", "Lowes", "Plant Something Else", "Hello this is a Test."
+            // change the above to:
+            // listOfPlants for Home Depot
+            // listOfPlants for Lowes
+            // ...
     };
 
     @Override
@@ -26,7 +35,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
 
         listSearch = findViewById(R.id.listSearch);
         editSearch = findViewById(R.id.editSearch);
-        adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.textViewListItem, data);
+        adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.textViewListItem, namesOfStores);
         listSearch.setAdapter(adapter);
 
         editSearch.addTextChangedListener(new TextWatcher() {
