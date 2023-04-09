@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/drawable/checkbox.xml" value="0.193" />
+        <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.193" />
+        <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/drawable/input_bg.xml" value="0.1585" />
+        <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/layout/activity_login.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/layout/activity_register.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/layout/activity_search_function.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/layout/activity_web_scraper.xml" value="0.1" />
         <entry key="..\:/Users/brind/Hackathon2023/app/src/main/res/layout/activity_web_scraping.xml" value="0.18333333333333332" />

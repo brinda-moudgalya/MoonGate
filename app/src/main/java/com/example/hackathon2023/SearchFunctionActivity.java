@@ -41,7 +41,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
     private ListView listSearch;
     private EditText editSearch;
 //    private ArrayAdapter<String> tempArrayAdapter;
-    private final ArrayList<String> temp = new ArrayList<>();
+//    private final ArrayList<String> temp = new ArrayList<>();
 
     // variables for pulling information from excel spreadsheets
     RecyclerView recyclerView;
@@ -135,18 +135,19 @@ public class SearchFunctionActivity extends AppCompatActivity {
 //                (this, R.layout.list_item, R.id.textViewListItem, temp);
 //        listSearch.setAdapter(tempArrayAdapter);
 //
-//        editSearch.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-//
-//            // as user types, plants are deleted if they don't contain correct letters
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            // as user types, plants are deleted if they don't contain correct letters
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                SearchFunctionActivity.this.plantName.stream().filter();
 //                SearchFunctionActivity.this.tempArrayAdapter.getFilter().filter(charSequence);
-//            }
-//            @Override
-//            public void afterTextChanged(Editable editable) {}
-//        });
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
     }
     private void showData() {
         adapter = new Adapter(this, storeName, plantName, plantPrice);
