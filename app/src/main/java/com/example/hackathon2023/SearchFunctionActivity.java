@@ -78,8 +78,6 @@ public class SearchFunctionActivity extends AppCompatActivity {
 
         // code for excel spreadsheet information
         String url = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGate.xls?raw=true";
-        String urlT = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGate.xlsx?raw=true";
-        String urlT1 = "https://github.com/bikashthapa01/excel-reader-android-app/blob/master/story.xls?raw=true";
         recyclerView = findViewById(R.id.recyclerView);
 
         storeName = new ArrayList<>();
