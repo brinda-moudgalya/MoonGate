@@ -46,8 +46,6 @@ public class SearchFunctionActivity extends AppCompatActivity {
     private EditText editSearch;
     private ArrayList<Adapter> adapterArrayList = new ArrayList<>();
     private ArrayAdapter<String> arrayAdapter;
-//    private ArrayAdapter<String> tempArrayAdapter;
-//    private final ArrayList<String> temp = new ArrayList<>();
 
     // variables for pulling information from excel spreadsheets
     RecyclerView recyclerView;
@@ -56,22 +54,6 @@ public class SearchFunctionActivity extends AppCompatActivity {
     Workbook workbook;
     List<String> storeName, plantName, plantPrice;
 
-    // inside of each of these, we pull information from each website about which plants they have.
-//    String [] homeDepotPlantsList = {
-//            "Rose", "Blueberry plant", "Tulip", "Lily", "Carnation", "Peach", "Cherry",
-//            "Cherry Blossom", "Nightshade", "Lavender", "Lilac", "Magnolia"
-//    };
-//    String [] lowesPlantsList = {
-//            "Rose", "Tulip", "Carnation", "Sweet Pea", "Sweet William", "Pine", "Apricot", "Peach"
-//    };
-//    String [] amazonPlantsList = {
-//            "Rhododendron", "Chamomile", "Parsley", "Thyme", "Sage", "Rosemary", "Sweet Pea",
-//            "Peach", "Rose", "Pear", "Apple"
-//    };
-//
-//    String [] namesOfStores = {
-//            "Home Depot", "Lowes", "Amazon"
-//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,18 +67,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
         addData("");
 
 
-//        // adding each plant into temp:
-//        for (String plant : homeDepotPlantsList) {
-//            temp.add("Home Depot: " + plant);
-//        }
-//        for (String plant : lowesPlantsList) {
-//            temp.add("Lowes: " + plant);
-//        }
-//        for (String plant : amazonPlantsList) {
-//            temp.add("Amazon: " + plant);
-//        }
-//
-//        // setting array adapter, which sets the information displayed in the searchview
+        // setting array adapter, which sets the information displayed in the searchview
         arrayAdapter = new ArrayAdapter<>
                 (this, R.layout.list_item, R.id.plantNameTextView, plantName);
 
@@ -107,12 +78,13 @@ public class SearchFunctionActivity extends AppCompatActivity {
             // as user types, plants are deleted if they don't contain correct letters
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // clear recyclerview
                 recyclerView.setAdapter(null);
+                // clear arraylists
                 storeName.clear();
                 plantName.clear();
                 plantPrice.clear();
                 addData(charSequence);
-//                SearchFunctionActivity.this.arrayAdapter.getFilter().filter(charSequence);
             }
             @Override
             public void afterTextChanged(Editable editable) {}
@@ -146,7 +118,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
                             Cell[] row = sheet.getRow(i);
                             if (row[0].getContents().toLowerCase(Locale.ROOT).contains(charSequence)
                                     || row[1].getContents().toLowerCase(Locale.ROOT).contains(charSequence)
-                                    || row[2].getContents().toLowerCase(Locale.ROOT).contains(charSequence)) {
+                                    || row[2].getContents().toLowerCase(Locale.ROOT).startsWith("$" + charSequence)) {
                                 storeName.add(row[0].getContents());
                                 plantName.add(row[1].getContents());
                                 plantPrice.add(row[2].getContents());
@@ -155,7 +127,6 @@ public class SearchFunctionActivity extends AppCompatActivity {
 
                         showData();
 
-//                        Log.d("TAG", "onSuccess: " + plantName);
                     } catch (IOException | BiffException e) {
                         e.printStackTrace();
                     }
