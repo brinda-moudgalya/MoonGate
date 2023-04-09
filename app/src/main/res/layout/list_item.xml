@@ -52,7 +52,20 @@
                 android:textColor="@color/black"
                 app:fontFamily="@font/poppins"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/plantStoreTextView" />
+                app:layout_constraintStart_toEndOf="@+id/plantStoreTextView"
+                app:layout_constraintTop_toBottomOf="@+id/plantNameTextView" />
+
+            <ImageView
+                android:id="@+id/pictureOfPlant"
+                android:layout_width="135dp"
+                android:layout_height="88dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/plantPriceTextView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_launcher_background" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

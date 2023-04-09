@@ -52,7 +52,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
     Adapter adapter;
     AsyncHttpClient client;
     Workbook workbook;
-    List<String> storeName, plantName, plantPrice;
+    List<String> storeName, plantName, plantPrice, plantURL;
 
 
     @Override
@@ -84,6 +84,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
                 storeName.clear();
                 plantName.clear();
                 plantPrice.clear();
+                plantURL.clear();
                 addData(charSequence);
             }
             @Override
@@ -92,12 +93,13 @@ public class SearchFunctionActivity extends AppCompatActivity {
     }
     private void addData(CharSequence charSequence) {
         // code for excel spreadsheet information
-        String url = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGate.xls?raw=true";
+        String url = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGate2.xls?raw=true";
         recyclerView = findViewById(R.id.recyclerView);
 
         storeName = new ArrayList<>();
         plantName = new ArrayList<>();
         plantPrice = new ArrayList<>();
+        plantURL = new ArrayList<>();
 
         client = new AsyncHttpClient();
         client.get(url, new FileAsyncHttpResponseHandler(this) {
@@ -122,6 +124,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
                                 storeName.add(row[0].getContents());
                                 plantName.add(row[1].getContents());
                                 plantPrice.add(row[2].getContents());
+                                plantURL.add(row[3].getContents());
                             }
                         }
 
@@ -135,7 +138,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
         });
     }
     private void showData() {
-        adapter = new Adapter(this, storeName, plantName, plantPrice);
+        adapter = new Adapter(this, storeName, plantName, plantPrice, plantURL);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
