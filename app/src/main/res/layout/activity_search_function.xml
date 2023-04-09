@@ -15,15 +15,18 @@
         android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:fontFamily="@font/poppins_thin"
         tools:ignore="HardcodedText" />
     <ListView
         android:id="@+id/listSearch"
+        app:fontFamily="@font/poppins_thin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:fontFamily="@font/poppins_thin" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

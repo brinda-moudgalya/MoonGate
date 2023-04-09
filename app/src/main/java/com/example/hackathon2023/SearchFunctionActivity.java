@@ -77,7 +77,9 @@ public class SearchFunctionActivity extends AppCompatActivity {
         editSearch = findViewById(R.id.editSearch);
 
         // code for excel spreadsheet information
-        String url = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGate.xlsx?raw=true";
+        String url = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGate.xls?raw=true";
+        String urlT = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGate.xlsx?raw=true";
+        String urlT1 = "https://github.com/bikashthapa01/excel-reader-android-app/blob/master/story.xls?raw=true";
         recyclerView = findViewById(R.id.recyclerView);
 
         storeName = new ArrayList<>();
@@ -119,7 +121,6 @@ public class SearchFunctionActivity extends AppCompatActivity {
             }
         });
 
-
 //        // adding each plant into temp:
 //        for (String plant : homeDepotPlantsList) {
 //            temp.add("Home Depot: " + plant);
@@ -149,12 +150,13 @@ public class SearchFunctionActivity extends AppCompatActivity {
 //            public void afterTextChanged(Editable editable) {}
 //        });
     }
-
     private void showData() {
         adapter = new Adapter(this, storeName, plantName, plantPrice);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
+
+
 //    public String webScraper (String url) {
 //        ArrayList<String> arrayList = new ArrayList<>();
 //        try {
