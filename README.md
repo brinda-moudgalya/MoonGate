@@ -6,3 +6,5 @@ Then began the coding. Our first idea was to use webscraping to gather the data 
 While one of us was working on retrieving the data, the other implemented the rest of the features - login & signup, the like button, and design. When one of us felt stuck, we swiched which part we were focusing on, so the project could keep moving forward.
 
 Even though we're siblings (especially since we're siblings), we get along pretty well. So it wasn't hard to work together; it was actually quite fun! We would definitely work together to further develop this app and perhaps another one in the future; if not for a competition, just simply for the fun of it.
+
+This project contains the work pushed by Brinda. Sneha continually pulled different aspects of it to work on the design and other functionalities. Thus, this repository contains evidence of our versions, but only the search function and cardview aspects. The final repository, with the final code pushed by Sneha, is also attached.
